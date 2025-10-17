@@ -1,195 +1,443 @@
+import { LineChart, ShieldCheck, Waves } from "lucide-react";
+
+const metrics = [
+  { value: '$72M', label: 'Assets Under Management', detail: 'Multi-jurisdictional digital + traditional mandates' },
+  { value: '31', label: 'Institutional Mandates', detail: 'Family offices, funds, treasuries, and corporates' },
+  { value: '4', label: 'Regulated Jurisdictions', detail: 'Switzerland, Luxembourg, United States, Singapore' },
+  { value: '2', label: 'Primary Licenses', detail: 'FINMA Asset Manager • CSSF Umbrella Compartments' },
+] as const;
+
+const capabilities = [
+  {
+    title: 'Digital Liquidity & Market Neutral',
+    summary: 'Delta-neutral liquidity provision, basis capture, and cross-exchange inventory management.',
+    detail: 'Utilises FPGA-enabled execution, smart order routing, and pre-trade risk throttles to deliver low-volatility, institutional-grade returns.',
+    icon: Waves,
+  },
+  {
+    title: 'Yield Engineering & Structured Access',
+    summary: 'Collateralised lending, stablecoin yield, and token-forward structures with bank-grade monitoring.',
+    detail: 'Integrates TradFi credit processes with on-chain transparency, offering duration-matched solutions for treasuries and funds.',
+    icon: ShieldCheck,
+  },
+  {
+    title: 'Macro & Cross-Asset Strategies',
+    summary: 'Directional and relative-value mandates spanning digital assets, FX, and commodities.',
+    detail: 'Combines discretionary macro views with quantitative overlays, supported by global banking and custody partners.',
+    icon: LineChart,
+  },
+] as const;
+
+const lifecycle = [
+  {
+    heading: 'Discovery & Structuring',
+    points: [
+      'Mandate workshops covering objectives, liquidity, and drawdown tolerances.',
+      'Custom structuring across SMA, segregated compartments, or fund vehicles.',
+      'Regulatory review for Swiss FINMA and Luxembourg CSSF compliance.'
+    ],
+  },
+  {
+    heading: 'Execution & Monitoring',
+    points: [
+      '24/7 trading desk with continuous market-making and risk surveillance.',
+      'Automated reconciliations, margin controls, and treasury management.',
+      'Allocator dashboards with T+0 transparency and metrics aligned to policy.'
+    ],
+  },
+  {
+    heading: 'Reporting & Governance',
+    points: [
+      'Monthly and quarterly board-ready reporting with audit trails.',
+      'On-demand scenario analysis and stress testing against portfolio rules.',
+      'Annual independent audits plus optional SOC 2-style attestations.'
+    ],
+  },
+] as const;
+
+const platformHighlights = [
+  {
+    title: 'Regulatory & Governance',
+    points: [
+      'FINMA-authorised Swiss asset manager with dedicated compliance and risk teams.',
+      'Luxembourg CSSF umbrella providing 400+ pre-approved compartments for global allocators.',
+      'Change-of-control supervision, AML/KYC oversight, and board-level governance across entities.',
+    ],
+  },
+  {
+    title: 'Banking & Custody Network',
+    points: [
+      'Tier-1 European banking relationships with segregated operating and client accounts.',
+      'Institutional custody incorporating MPC wallets, warm/cold storage, and insurance coverage.',
+      'Integrated fiat on/off ramps, FX hedging, and treasury optimisation.'
+    ],
+  },
+  {
+    title: 'Execution Fabric',
+    points: [
+      'FPGA-grade execution stack delivering sub-120ns latency and multi-venue connectivity.',
+      'Risk throttles, real-time analytics, and cross-exchange surveillance tuned for institutional mandates.',
+      'Trade lifecycle automation linking exchanges, OTC venues, and TradFi brokers.'
+    ],
+  },
+  {
+    title: 'Reporting & Analytics',
+    points: [
+      'Allocator portal with performance, risk, and ESG overlays updated in near real time.',
+      'Data warehouse combining on-chain telemetry with traditional financial data sources.',
+      'Custom APIs and data-room integrations for LPs, auditors, and regulators.'
+    ],
+  },
+] as const;
+
+const clientSegments = [
+  {
+    segment: 'Institutional Allocators',
+    description: 'Family offices, fund-of-funds, and wealth platforms seeking regulated exposure to digital and hybrid strategies.',
+  },
+  {
+    segment: 'Corporate Treasuries',
+    description: 'Public and private companies optimising treasury yield and liquidity with ring-fenced, policy-aligned mandates.',
+  },
+  {
+    segment: 'Token Issuers & Foundations',
+    description: 'Protocol treasuries requiring liquidity provisioning, reserve management, and market stability programs.',
+  },
+] as const;
+
+const researchHighlights = [
+  {
+    title: 'Digital Liquidity Quarterly',
+    type: 'Market Update',
+    summary: 'Analysis of exchange depth, basis spreads, and venue selection across major digital asset markets.',
+  },
+  {
+    title: 'Yield Curve in Tokenised Credit',
+    type: 'Whitepaper',
+    summary: 'Framework for collateral quality, duration, and counterparty selection in tokenised money markets.',
+  },
+  {
+    title: 'Macro Regime Monitor',
+    type: 'Insight',
+    summary: 'Monthly cross-asset outlook connecting TradFi macro factors with digital asset volatility and flows.',
+  },
+] as const;
+
+const offices = [
+  { city: 'New York, USA', note: 'North American Institutional Coverage' },
+  { city: 'Luzern, Switzerland', note: 'FINMA-Regulated Entity' },
+  { city: 'Luxembourg', note: 'CSSF Umbrella Platform' },
+  { city: 'Singapore', note: 'Asia-Pacific Partnerships Hub' },
+] as const;
+
+const trustedPartners = [
+  { name: 'Helvetia Bank', tag: 'Banking' },
+  { name: 'EuroClear Digital', tag: 'Custody' },
+  { name: 'Summit Capital', tag: 'Allocator' },
+  { name: 'Atlas Protocol', tag: 'Token Treasury' },
+  { name: 'Northbridge Advisors', tag: 'Advisory' },
+] as const;
+
+const pressMentions = [
+  {
+    outlet: 'Financial Ledger',
+    headline: 'Swiss-regulated Mira Labs bridges TradFi governance with digital market liquidity.',
+    date: 'Oct 2025',
+  },
+  {
+    outlet: 'Global Treasury Forum',
+    headline: 'Treasuries turn to Mira Labs for tokenised yield programmes with daily transparency.',
+    date: 'Jul 2025',
+  },
+  {
+    outlet: 'Digital Asset Insider',
+    headline: 'Mira Labs launches macro overlay service integrating FX, rates, and crypto exposures.',
+    date: 'May 2025',
+  },
+] as const;
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-900">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-light text-white mb-6 tracking-tight">
-            MIRA LABS
+    <main className="min-h-screen bg-transparent text-white">
+      <section className="relative overflow-hidden py-32">
+        <div className="absolute inset-0">
+          <div className="pointer-events-none absolute -left-16 top-[-160px] h-80 w-80 rounded-full bg-sky-400/20 blur-3xl" />
+          <div className="pointer-events-none absolute right-[-120px] top-32 h-96 w-96 rounded-full bg-indigo-500/25 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-[-220px] left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-blue-500/15 blur-3xl" />
+        </div>
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.35em] text-slate-200">
+            Digital + Traditional Asset Management
+          </span>
+          <h1 className="mt-6 max-w-4xl text-balance text-4xl font-light tracking-tight text-white sm:text-5xl md:text-6xl">
+            Regulated multi-asset management bridging digital markets and traditional finance.
           </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl text-slate-300 mb-4 font-light">
-            Swiss-Regulated Digital Asset Management Platform
+          <p className="mt-6 max-w-3xl text-lg text-slate-200 sm:text-xl">
+            Mira Labs operates a Swiss FINMA-regulated platform with Luxembourg CSSF compartments, delivering
+            liquidity, structured yield, and macro strategies to institutions across Europe, the Americas, and Asia.
           </p>
-          <p className="text-lg sm:text-xl text-slate-400 mb-8">
-            Institutional-Grade Infrastructure for Digital Asset Management
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#about" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded transition-all font-light">
-              Learn More
+          <div className="mt-14 grid w-full max-w-4xl grid-cols-2 gap-4 md:grid-cols-4">
+            {metrics.map((metric) => (
+              <article key={metric.label} className="glass-border relative p-[1px]">
+                <div className="relative h-full rounded-[1.35rem] bg-slate-950/75 p-5 text-left">
+                  <p className="text-2xl font-light text-white sm:text-3xl">{metric.value}</p>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.35em] text-slate-300">{metric.label}</p>
+                  <p className="mt-3 text-xs text-slate-400">{metric.detail}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="/platform"
+              className="rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 px-10 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-xl shadow-blue-900/50 transition hover:shadow-blue-800/60"
+            >
+              Explore Platform
             </a>
-            <a href="#contact" className="px-8 py-4 bg-transparent border border-white hover:bg-white/10 text-white rounded transition-all font-light">
-              Get in Touch
+            <a
+              href="/strategies"
+              className="rounded-full border border-white/25 px-10 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-white/10"
+            >
+              View Strategies
             </a>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-4xl md:text-5xl font-light text-slate-900 mb-8 text-center">
-            About Mira Labs
-          </h2>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-light text-slate-900 mb-4">Our Mission</h3>
-              <p className="text-slate-700 leading-relaxed mb-4">
-                Mira Labs is building the next generation of digital asset management infrastructure,
-                combining Swiss regulatory compliance with cutting-edge technology.
-              </p>
-              <p className="text-slate-700 leading-relaxed">
-                We provide institutional investors with secure, compliant access to digital asset
-                opportunities through our Swiss-regulated platform.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-light text-slate-900 mb-4">Why Mira Labs?</h3>
-              <ul className="space-y-3 text-slate-700">
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
-                  <span>Swiss regulatory framework and FINMA oversight</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
-                  <span>Institutional-grade security and infrastructure</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
-                  <span>Experienced team with proven track record</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
-                  <span>Multi-jurisdictional presence (NY, Luzern, Luxembourg, Singapore)</span>
-                </li>
-              </ul>
-            </div>
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="text-4xl font-light tracking-tight sm:text-5xl">Mandates & Capabilities</h2>
+            <p className="mt-4 text-lg text-slate-200">
+              Institutional strategies spanning market-neutral liquidity, structured yield, and cross-asset macro exposure.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {capabilities.map((capability) => (
+              <article
+                key={capability.title}
+                className="glass-border relative overflow-hidden p-[1px] transition hover:-translate-y-1 hover:shadow-[0_45px_95px_-50px_rgba(79,70,229,0.55)]"
+              >
+                <div className="relative h-full rounded-[1.35rem] bg-slate-950/75 p-8 text-left">
+                  <capability.icon className="h-10 w-10 text-sky-300" aria-hidden="true" />
+                  <h3 className="mt-6 text-xl font-light text-white">{capability.title}</h3>
+                  <p className="mt-4 text-sm text-slate-200">{capability.summary}</p>
+                  <p className="mt-3 text-xs text-slate-400">{capability.detail}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-4xl md:text-5xl font-light text-slate-900 mb-12 text-center">
-            Our Services
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Asset Management</h3>
-              <p className="text-slate-700">
-                Professional digital asset management with Swiss regulatory compliance and
-                institutional-grade security.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Trading Platform</h3>
-              <p className="text-slate-700">
-                Advanced algorithmic trading strategies with real-time execution and
-                comprehensive risk management.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Custody Solutions</h3>
-              <p className="text-slate-700">
-                Secure digital asset custody with multi-signature wallets and
-                institutional-grade security protocols.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 bg-slate-900 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-light mb-2">$2-5M</div>
-              <div className="text-slate-400 text-sm uppercase tracking-wide">Pre-Seed Raise</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-light mb-2">4</div>
-              <div className="text-slate-400 text-sm uppercase tracking-wide">Global Offices</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-light mb-2">Swiss</div>
-              <div className="text-slate-400 text-sm uppercase tracking-wide">Regulated</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-light mb-2">24/7</div>
-              <div className="text-slate-400 text-sm uppercase tracking-wide">Market Access</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-4xl md:text-5xl font-light text-slate-900 mb-8 text-center">
-            Get in Touch
-          </h2>
-          <p className="text-center text-slate-700 mb-12 text-lg">
-            Interested in learning more about Mira Labs? Contact us for investment opportunities
-            or partnership inquiries.
-          </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="text-center p-8 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Locations</h3>
-              <div className="space-y-2 text-slate-700">
-                <p>New York, USA</p>
-                <p>Luzern, Switzerland</p>
-                <p>Luxembourg</p>
-                <p>Singapore</p>
+      <section className="py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur">
+            <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-300">
+                  Trusted By
+                </p>
+                <h3 className="mt-3 text-2xl font-light text-white">
+                  Banking partners, allocators, and token treasuries spanning Europe, the Americas, and Asia.
+                </h3>
+              </div>
+              <div className="grid grid-cols-2 gap-4 text-sm text-slate-200 sm:flex sm:flex-wrap sm:gap-6">
+                {trustedPartners.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="rounded-xl border border-white/15 px-4 py-2 text-center text-slate-300"
+                  >
+                    {partner.name}
+                    <div className="mt-1 text-[10px] uppercase tracking-[0.35em] text-slate-500">
+                      {partner.tag}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="text-center p-8 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">Investment Inquiries</h3>
-              <p className="text-slate-700 mb-4">
-                For institutional investment opportunities and partnership discussions
-              </p>
-              <a href="mailto:invest@miralabs.io" className="text-blue-600 hover:text-blue-700 font-medium">
-                invest@miralabs.io
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h3 className="text-2xl font-light mb-4">MIRA LABS</h3>
-              <p className="text-slate-400 text-sm">
-                Swiss-Regulated Digital Asset Management Platform
-              </p>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide mb-4 text-slate-400">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#about" className="text-slate-300 hover:text-white transition">About</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition">Team</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition">Investors</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide mb-4 text-slate-400">Legal</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-slate-300 hover:text-white transition">Privacy Policy</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition">Terms of Service</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition">Compliance</a></li>
-              </ul>
-            </div>
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-14 text-center">
+            <h2 className="text-4xl font-light tracking-tight">Allocator Lifecycle</h2>
+            <p className="mt-4 text-lg text-slate-200">
+              Structured onboarding, execution, and governance delivering continuous transparency and control.
+            </p>
           </div>
-          <div className="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
-            <p>&copy; 2025 Mira Labs. All rights reserved.</p>
-            <p className="mt-2">New York • Luzern • Luxembourg • Singapore</p>
+          <div className="grid gap-8 md:grid-cols-3">
+            {lifecycle.map((stage) => (
+              <article key={stage.heading} className="glass-border relative p-[1px]">
+                <div className="relative h-full rounded-[1.35rem] bg-slate-950/80 p-8">
+                  <h3 className="text-lg font-light text-white">{stage.heading}</h3>
+                  <ul className="mt-6 space-y-3 text-sm text-slate-200">
+                    {stage.points.map((point) => (
+                      <li key={point} className="flex gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-sky-300/80" aria-hidden="true" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
-      </footer>
+      </section>
+
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <h2 className="text-4xl font-light tracking-tight sm:text-5xl">Institutional Platform</h2>
+            <p className="mt-4 text-lg text-slate-200">
+              Infrastructure, partnerships, and analytics designed for regulated cross-asset mandates.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {platformHighlights.map((highlight) => (
+              <article key={highlight.title} className="glass-border relative overflow-hidden p-[1px]">
+                <div className="relative h-full rounded-[1.35rem] bg-slate-950/75 p-8">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-300">
+                    {highlight.title}
+                  </p>
+                  <ul className="mt-6 space-y-3 text-sm text-slate-200">
+                    {highlight.points.map((point) => (
+                      <li key={point} className="flex gap-3">
+                        <span className="mt-1 h-2 w-2 rounded-full bg-white/60" aria-hidden="true" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-14 text-center">
+            <h2 className="text-4xl font-light tracking-tight">Who We Serve</h2>
+            <p className="mt-4 text-lg text-slate-200">
+              Tailored operating models for allocators, treasuries, and ecosystem partners.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {clientSegments.map((segment) => (
+              <article key={segment.segment} className="glass-border relative p-[1px]">
+                <div className="relative h-full rounded-[1.35rem] bg-slate-950/75 p-8">
+                  <h3 className="text-lg font-light text-white">{segment.segment}</h3>
+                  <p className="mt-4 text-sm text-slate-200">{segment.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-14 text-center">
+            <h2 className="text-4xl font-light tracking-tight">In the News</h2>
+            <p className="mt-4 text-lg text-slate-200">
+              Coverage from financial press and institutional forums highlighting Mira Labs’ platform.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {pressMentions.map((mention) => (
+              <article key={mention.headline} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-200">{mention.outlet}</p>
+                <h3 className="mt-4 text-sm font-light text-white">{mention.headline}</h3>
+                <p className="mt-4 text-[11px] uppercase tracking-[0.3em] text-slate-400">{mention.date}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl font-light tracking-tight">Research & Commentary</h2>
+            <p className="mt-4 text-lg text-slate-200">
+              Excerpts from the Mira Labs research desk and client communication streams.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {researchHighlights.map((item) => (
+              <article key={item.title} className="glass-border relative overflow-hidden p-[1px] transition hover:-translate-y-1">
+                <div className="relative h-full rounded-[1.35rem] bg-slate-950/80 p-8">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-slate-300">{item.type}</p>
+                  <h3 className="mt-4 text-2xl font-light text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm text-slate-200">{item.summary}</p>
+                  <p className="mt-6 text-xs text-slate-400">Full reports available in the client portal.</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl font-light tracking-tight sm:text-5xl">Engage With Mira Labs</h2>
+            <p className="mt-4 text-lg text-slate-200">
+              Coordinate a mandate review, access the client portal, or connect with our relationship team.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-[1.2fr_1fr]">
+            <article className="glass-border relative overflow-hidden p-[1px]">
+              <div className="relative h-full rounded-[1.35rem] bg-slate-950/80 p-8">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.35em] text-slate-300">
+                  Briefing Requests
+                </h3>
+                <p className="mt-4 text-sm text-slate-200">
+                  Submit institutional credentials to receive mandate documentation, service-level agreements, and reporting samples.
+                </p>
+                <div className="mt-6 rounded-xl border border-dashed border-white/15 bg-white/5 p-4 text-xs text-slate-300 space-y-2">
+                  <p>Include:</p>
+                  <ul className="space-y-1">
+                    <li>• Organisation, regulatory status, and AUM</li>
+                    <li>• Mandate objectives and timeline</li>
+                    <li>• Preferred structure (SMA, compartment, fund)</li>
+                  </ul>
+                </div>
+                <div className="mt-6">
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 px-6 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-white shadow-lg shadow-blue-900/40 transition hover:shadow-blue-800/50"
+                  >
+                    Contact Team
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article className="glass-border relative overflow-hidden p-[1px]">
+              <div className="relative h-full rounded-[1.35rem] bg-slate-950/80 p-8">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.35em] text-slate-300">
+                  Global Presence
+                </h3>
+                <ul className="mt-6 space-y-4 text-sm text-slate-200">
+                  {offices.map((office) => (
+                    <li key={office.city}>
+                      <p className="font-semibold text-white">{office.city}</p>
+                      <p className="text-xs uppercase tracking-wide text-slate-400">{office.note}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-xs text-slate-400">
+                  Mira Labs operates through regulated entities in Switzerland and Luxembourg, with representative offices in New York and Singapore.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
