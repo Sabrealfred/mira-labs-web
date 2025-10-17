@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030713;
-  --foreground: #e2e8f0;
+  --background: #ffffff;
+  --foreground: #0a0f1e;
+  --primary-blue: #0066cc;
+  --accent-blue: #0052a3;
+  --light-blue: #e6f2ff;
+  --border-gray: #e1e8ed;
+  --text-secondary: #475569;
 }
 
 @theme inline {
@@ -14,30 +19,35 @@
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.12) 0, rgba(3, 7, 19, 0) 45%),
-    radial-gradient(circle at 90% 10%, rgba(147, 197, 253, 0.16) 0, rgba(3, 7, 19, 0) 46%),
-    radial-gradient(circle at 50% 80%, rgba(129, 140, 248, 0.12) 0, rgba(3, 7, 19, 0) 40%),
-    linear-gradient(180deg, #03040b 0%, #030713 100%);
+  background: #ffffff;
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.65;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  line-height: 1.7;
+  letter-spacing: -0.011em;
 }
 
-.glass-border {
-  position: relative;
-  border-radius: 1.5rem;
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(148, 163, 184, 0.04));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: hidden;
+/* Professional card style */
+.professional-card {
+  background: #ffffff;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.glass-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
-  pointer-events: none;
+.professional-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 8px 24px rgba(0, 102, 204, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Accent sections */
+.accent-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-top: 1px solid var(--border-gray);
+  border-bottom: 1px solid var(--border-gray);
+}
+
+/* Hero gradient overlay */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
 }
