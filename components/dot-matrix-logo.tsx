@@ -20,19 +20,36 @@ export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProp
   const config = sizeConfig[size];
   const totalDots = config.rows * config.cols;
 
-  // Create the "M" pattern (simplified version)
-  const isPartOfM = (index: number): boolean => {
+  // Create the dragonfly pattern
+  const isPartOfDragonfly = (index: number): boolean => {
     const row = Math.floor(index / config.cols);
     const col = index % config.cols;
+    const centerCol = Math.floor(config.cols / 2);
+    const centerRow = Math.floor(config.rows / 2);
 
-    // Left vertical line
-    if (col === 1 && row >= 1) return true;
-    // Right vertical line
-    if (col === config.cols - 2 && row >= 1) return true;
-    // Left diagonal
-    if (row >= 1 && row <= 3 && col === row + 1) return true;
-    // Right diagonal
-    if (row >= 1 && row <= 3 && col === config.cols - row - 2) return true;
+    // Head (top center)
+    if (row === 0 && col === centerCol) return true;
+    if (row === 1 && (col === centerCol - 1 || col === centerCol || col === centerCol + 1)) return true;
+
+    // Body (vertical center line)
+    if (col === centerCol && row >= 2 && row <= config.rows - 2) return true;
+
+    // Upper wings (wider at top)
+    if (row === 2 || row === 3) {
+      if (col === centerCol - 2 || col === centerCol + 2) return true;
+      if (col === centerCol - 3 || col === centerCol + 3) return true;
+    }
+    if (row === 4) {
+      if (col === centerCol - 2 || col === centerCol + 2) return true;
+    }
+
+    // Lower wings (smaller)
+    if (row === centerRow + 1 || row === centerRow + 2) {
+      if (col === centerCol - 2 || col === centerCol + 2) return true;
+    }
+
+    // Tail (thin at bottom)
+    if (row === config.rows - 1 && col === centerCol) return true;
 
     return false;
   };
@@ -56,7 +73,7 @@ export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProp
         >
           {Array.from({ length: config.cols }).map((_, colIndex) => {
             const index = rowIndex * config.cols + colIndex;
-            const isM = isPartOfM(index);
+            const isDragonfly = isPartOfDragonfly(index);
             const distance = getDistance(index, hoveredDot);
             const intensity = hoveredDot !== null ? Math.max(0, 1 - distance / 5) : 0;
 
@@ -67,15 +84,15 @@ export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProp
                 style={{
                   width: config.dotSize,
                   height: config.dotSize,
-                  backgroundColor: isM ? "var(--dot-primary)" : "var(--dot-secondary)",
+                  backgroundColor: isDragonfly ? "var(--dot-primary)" : "var(--dot-secondary)",
                 }}
                 initial={{ scale: 0.8, opacity: 0.4 }}
                 animate={{
-                  scale: isM ? 1 : 0.6 + intensity * 0.4,
-                  opacity: isM ? 1 : 0.3 + intensity * 0.5,
+                  scale: isDragonfly ? 1 : 0.6 + intensity * 0.4,
+                  opacity: isDragonfly ? 1 : 0.3 + intensity * 0.5,
                   backgroundColor: intensity > 0.5
                     ? "var(--dot-primary)"
-                    : isM
+                    : isDragonfly
                     ? "var(--dot-primary)"
                     : "var(--dot-secondary)",
                 }}
@@ -119,28 +136,38 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
     };
   }, []);
 
-  const dots = Array.from({ length: 100 });
+  // Create a much denser grid of dots
+  const gridCols = 30;
+  const gridRows = 20;
+  const dots = Array.from({ length: gridCols * gridRows });
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
       <div className="relative h-full w-full">
         {dots.map((_, i) => {
-          const x = (i % 10) * 10;
-          const y = Math.floor(i / 10) * 10;
+          const col = i % gridCols;
+          const row = Math.floor(i / gridCols);
+          const x = (col / (gridCols - 1)) * 100;
+          const y = (row / (gridRows - 1)) * 100;
+
+          // Calculate distance from mouse in percentage
+          const mouseXPercent = (mousePosition.x / windowSize.width) * 100;
+          const mouseYPercent = (mousePosition.y / windowSize.height) * 100;
           const distance = Math.sqrt(
-            Math.pow(mousePosition.x / windowSize.width * 100 - x, 2) +
-            Math.pow(mousePosition.y / windowSize.height * 100 - y, 2)
+            Math.pow(mouseXPercent - x, 2) + Math.pow(mouseYPercent - y, 2)
           );
-          const size = Math.max(2, 8 - distance / 5);
-          const opacity = Math.max(0.1, 0.6 - distance / 50);
+
+          const size = Math.max(2, 6 - distance / 8);
+          const opacity = Math.max(0.15, 0.5 - distance / 40);
 
           return (
             <motion.div
               key={i}
-              className="absolute rounded-full bg-gray-400"
+              className="absolute rounded-full"
               style={{
                 left: `${x}%`,
                 top: `${y}%`,
+                backgroundColor: "var(--dot-secondary)",
               }}
               animate={{
                 width: size,
@@ -148,7 +175,7 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
                 opacity: opacity,
               }}
               transition={{
-                duration: 0.3,
+                duration: 0.4,
                 ease: "easeOut",
               }}
             />
