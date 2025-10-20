@@ -11,45 +11,114 @@ interface DotMatrixLogoProps {
 export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProps) {
   const [hoveredDot, setHoveredDot] = useState<number | null>(null);
 
+  // Increased grid size for more detailed dragonfly
   const sizeConfig = {
-    sm: { rows: 6, cols: 8, dotSize: 4, gap: 6 },
-    md: { rows: 8, cols: 12, dotSize: 6, gap: 8 },
-    lg: { rows: 10, cols: 15, dotSize: 8, gap: 10 },
+    sm: { rows: 12, cols: 16, dotSize: 3, gap: 4 },
+    md: { rows: 16, cols: 20, dotSize: 4, gap: 5 },
+    lg: { rows: 24, cols: 30, dotSize: 5, gap: 6 },
   };
 
   const config = sizeConfig[size];
   const totalDots = config.rows * config.cols;
 
-  // Create the dragonfly pattern
+  // Much more detailed dragonfly pattern with many more dots
   const isPartOfDragonfly = (index: number): boolean => {
     const row = Math.floor(index / config.cols);
     const col = index % config.cols;
     const centerCol = Math.floor(config.cols / 2);
-    const centerRow = Math.floor(config.rows / 2);
 
-    // Head (top center)
-    if (row === 0 && col === centerCol) return true;
-    if (row === 1 && (col === centerCol - 1 || col === centerCol || col === centerCol + 1)) return true;
-
-    // Body (vertical center line)
-    if (col === centerCol && row >= 2 && row <= config.rows - 2) return true;
-
-    // Upper wings (wider at top)
-    if (row === 2 || row === 3) {
-      if (col === centerCol - 2 || col === centerCol + 2) return true;
-      if (col === centerCol - 3 || col === centerCol + 3) return true;
+    // HEAD (rounded, 3 rows)
+    if (row === 0) {
+      if (col === centerCol || col === centerCol - 1 || col === centerCol + 1) return true;
     }
-    if (row === 4) {
-      if (col === centerCol - 2 || col === centerCol + 2) return true;
+    if (row === 1) {
+      if (col >= centerCol - 2 && col <= centerCol + 2) return true;
+    }
+    if (row === 2) {
+      if (col >= centerCol - 1 && col <= centerCol + 1) return true;
     }
 
-    // Lower wings (smaller)
-    if (row === centerRow + 1 || row === centerRow + 2) {
-      if (col === centerCol - 2 || col === centerCol + 2) return true;
+    // THORAX (thick body section)
+    if (row >= 3 && row <= 6) {
+      if (col === centerCol) return true;
+      if (col === centerCol - 1 || col === centerCol + 1) return true;
     }
 
-    // Tail (thin at bottom)
-    if (row === config.rows - 1 && col === centerCol) return true;
+    // ABDOMEN (long thin body)
+    if (row >= 7 && row <= config.rows - 2) {
+      if (col === centerCol) return true;
+    }
+
+    // TAIL (tapered end)
+    if (row === config.rows - 1) {
+      if (col === centerCol) return true;
+    }
+
+    // UPPER WINGS (large, detailed)
+    const upperWingStartRow = 4;
+    // Right upper wing
+    if (row === upperWingStartRow) {
+      if (col >= centerCol + 2 && col <= centerCol + 7) return true;
+    }
+    if (row === upperWingStartRow + 1) {
+      if (col >= centerCol + 2 && col <= centerCol + 9) return true;
+    }
+    if (row === upperWingStartRow + 2) {
+      if (col >= centerCol + 2 && col <= centerCol + 8) return true;
+    }
+    if (row === upperWingStartRow + 3) {
+      if (col >= centerCol + 2 && col <= centerCol + 6) return true;
+    }
+    if (row === upperWingStartRow + 4) {
+      if (col >= centerCol + 2 && col <= centerCol + 4) return true;
+    }
+
+    // Left upper wing (mirror)
+    if (row === upperWingStartRow) {
+      if (col >= centerCol - 7 && col <= centerCol - 2) return true;
+    }
+    if (row === upperWingStartRow + 1) {
+      if (col >= centerCol - 9 && col <= centerCol - 2) return true;
+    }
+    if (row === upperWingStartRow + 2) {
+      if (col >= centerCol - 8 && col <= centerCol - 2) return true;
+    }
+    if (row === upperWingStartRow + 3) {
+      if (col >= centerCol - 6 && col <= centerCol - 2) return true;
+    }
+    if (row === upperWingStartRow + 4) {
+      if (col >= centerCol - 4 && col <= centerCol - 2) return true;
+    }
+
+    // LOWER WINGS (smaller, below upper wings)
+    const lowerWingStartRow = upperWingStartRow + 2;
+    // Right lower wing
+    if (row === lowerWingStartRow) {
+      if (col >= centerCol + 2 && col <= centerCol + 5) return true;
+    }
+    if (row === lowerWingStartRow + 1) {
+      if (col >= centerCol + 2 && col <= centerCol + 6) return true;
+    }
+    if (row === lowerWingStartRow + 2) {
+      if (col >= centerCol + 2 && col <= centerCol + 5) return true;
+    }
+    if (row === lowerWingStartRow + 3) {
+      if (col >= centerCol + 2 && col <= centerCol + 4) return true;
+    }
+
+    // Left lower wing (mirror)
+    if (row === lowerWingStartRow) {
+      if (col >= centerCol - 5 && col <= centerCol - 2) return true;
+    }
+    if (row === lowerWingStartRow + 1) {
+      if (col >= centerCol - 6 && col <= centerCol - 2) return true;
+    }
+    if (row === lowerWingStartRow + 2) {
+      if (col >= centerCol - 5 && col <= centerCol - 2) return true;
+    }
+    if (row === lowerWingStartRow + 3) {
+      if (col >= centerCol - 4 && col <= centerCol - 2) return true;
+    }
 
     return false;
   };
@@ -136,9 +205,11 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
     };
   }, []);
 
-  // Create a much denser grid of dots
-  const gridCols = 30;
-  const gridRows = 20;
+  // MUCH DENSER grid - covering entire screen area
+  // Calculate based on actual window size for full coverage
+  const dotSpacing = 20; // pixels between dots
+  const gridCols = Math.ceil(windowSize.width / dotSpacing);
+  const gridRows = Math.ceil(windowSize.height / dotSpacing);
   const dots = Array.from({ length: gridCols * gridRows });
 
   return (
@@ -147,26 +218,27 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
         {dots.map((_, i) => {
           const col = i % gridCols;
           const row = Math.floor(i / gridCols);
-          const x = (col / (gridCols - 1)) * 100;
-          const y = (row / (gridRows - 1)) * 100;
 
-          // Calculate distance from mouse in percentage
-          const mouseXPercent = (mousePosition.x / windowSize.width) * 100;
-          const mouseYPercent = (mousePosition.y / windowSize.height) * 100;
+          // Position dots evenly across the entire space
+          const x = (col * dotSpacing);
+          const y = (row * dotSpacing);
+
+          // Calculate distance from mouse in pixels
           const distance = Math.sqrt(
-            Math.pow(mouseXPercent - x, 2) + Math.pow(mouseYPercent - y, 2)
+            Math.pow(mousePosition.x - x, 2) + Math.pow(mousePosition.y - y, 2)
           );
 
-          const size = Math.max(2, 6 - distance / 8);
-          const opacity = Math.max(0.15, 0.5 - distance / 40);
+          // Responsive size and opacity based on distance
+          const size = Math.max(1.5, 5 - distance / 100);
+          const opacity = Math.max(0.1, 0.4 - distance / 300);
 
           return (
             <motion.div
               key={i}
               className="absolute rounded-full"
               style={{
-                left: `${x}%`,
-                top: `${y}%`,
+                left: `${x}px`,
+                top: `${y}px`,
                 backgroundColor: "var(--dot-secondary)",
               }}
               animate={{
@@ -175,7 +247,7 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
                 opacity: opacity,
               }}
               transition={{
-                duration: 0.4,
+                duration: 0.3,
                 ease: "easeOut",
               }}
             />
