@@ -1,235 +1,265 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Platform | Mira Labs",
-  description:
-    "Discover Mira Labs’ regulated infrastructure: FINMA authorization, CSSF compartments, Tier-1 banking, and institutional-grade technology.",
-};
+import { motion } from "framer-motion";
+import { AnimatedDotPattern } from "@/components/dot-matrix-logo";
+import { Shield, Building2, Network, Lock, Gauge, Globe2, CheckCircle } from "lucide-react";
 
-const pillars = [
+const platformFeatures = [
   {
-    heading: "Regulatory Stack",
-    bullets: [
-      "FINMA asset manager authorization (FinIA Art. 17) with established SRO membership for AML/KYC.",
-      "Luxembourg CSSF umbrella structure enabling 400+ pre-approved compartments.",
-      "Change-of-control process scoped with legal and banking partners to ensure seamless ownership transfer.",
-      "Independent risk, compliance, and audit functions maintained within the Swiss entity.",
+    icon: Shield,
+    title: "FINMA-Authorized Asset Manager",
+    description: "Swiss Article 17 FINMA license for institutional asset management with full regulatory supervision and European passporting rights.",
+    benefits: [
+      "Direct regulatory oversight by Swiss Financial Market Supervisory Authority",
+      "Institutional-grade compliance framework with automated AML/KYC workflows",
+      "Board-level governance structure with independent risk and audit committees",
     ],
   },
   {
-    heading: "Banking & Custody",
-    bullets: [
-      "Tier-1 European banking relationships with segregated operating and client accounts.",
-      "Bank-grade custody and triparty arrangements ready for institutional mandates.",
-      "Daily reconciliation, independent sign-off, and treasury oversight across currencies.",
-      "Scenario hedging and liquidity buffers aligning with institutional risk policies.",
+    icon: Building2,
+    title: "Luxembourg CSSF Umbrella Fund",
+    description: "Pre-approved compartment structure enabling rapid deployment of bespoke mandates with full regulatory coverage.",
+    benefits: [
+      "400+ compartment capacity for segregated institutional portfolios",
+      "UCITS-compatible framework supporting cross-border distribution",
+      "Optimized tax treatment for international institutional investors",
     ],
   },
   {
-    heading: "Execution Technology",
-    bullets: [
-      "FPGA-enabled execution stack delivering sub-120ns latency for systematic strategies.",
-      "Multi-venue connectivity with real-time analytics, exposure, and risk throttles.",
-      "Scenario-tested strategies targeting 15–25% gross returns (non-guaranteed).",
-      "Modular architecture to onboard external managers and strategy sleeves rapidly.",
+    icon: Network,
+    title: "Tier-1 Banking Network",
+    description: "Segregated banking relationships with top-tier European institutions providing multi-currency operations and custody services.",
+    benefits: [
+      "Multi-bank structure ensuring operational resilience and redundancy",
+      "Real-time treasury management with automated reconciliation",
+      "Integrated FX hedging and cross-border payment rails",
     ],
   },
   {
-    heading: "Compliance & Reporting",
-    bullets: [
-      "Automated AML/KYC, continuous transaction monitoring, and suspicious activity workflows.",
-      "Daily NAV, exposure, and liquidity dashboards for allocators and regulators.",
-      "Audit-ready documentation, periodic independent reviews, and oversight from third-party advisors.",
-      "Standardized CSSF compartment templates for onboarding new strategies or external managers.",
+    icon: Lock,
+    title: "Institutional Custody Infrastructure",
+    description: "Multi-layered custody architecture combining MPC technology, hardware security modules, and institutional-grade insurance.",
+    benefits: [
+      "Multi-party computation wallets eliminating single points of failure",
+      "Hot/warm/cold storage tiering optimized for liquidity and security",
+      "Comprehensive insurance coverage through leading digital asset insurers",
     ],
   },
-] as const;
+  {
+    icon: Gauge,
+    title: "FPGA-Grade Execution Stack",
+    description: "Sub-120 nanosecond latency execution infrastructure with smart order routing and pre-trade risk controls.",
+    benefits: [
+      "Multi-venue connectivity across 40+ centralized and decentralized exchanges",
+      "Real-time risk throttles preventing breaches of mandate parameters",
+      "Automated best-execution analytics and trade cost analysis",
+    ],
+  },
+  {
+    icon: Globe2,
+    title: "Global Operating Footprint",
+    description: "Presence across four jurisdictions enabling 24/7 trading operations and localized institutional support.",
+    benefits: [
+      "New York: North American institutional coverage and partnerships",
+      "Luzern: FINMA-regulated entity headquarters and Swiss operations",
+      "Luxembourg: CSSF platform operations and European investor servicing",
+      "Singapore: Asia-Pacific trading desk and regional partnerships",
+    ],
+  },
+];
 
-const operatingModel = [
+const technicalStack = [
   {
-    title: "Day-One Readiness",
-    description:
-      "Post-close, Mira Labs inherits a live FINMA/SRO license, staffed compliance team, and $72M (~CHF 60M) of institutional AUM.",
+    category: "Regulatory & Compliance",
+    items: [
+      "FINMA Article 17 Asset Manager License",
+      "Luxembourg CSSF Umbrella Fund Authorization",
+      "Swiss SRO Membership (VQF)",
+      "Automated AML/KYC & Transaction Monitoring",
+      "Real-Time Regulatory Reporting",
+    ],
   },
   {
-    title: "Luxembourg Integration",
-    description:
-      "Luxembourg CSSF compartments provide an umbrella vehicle to onboard external managers with streamlined regulatory approvals.",
+    category: "Banking & Treasury",
+    items: [
+      "Multi-Bank Segregated Account Structure",
+      "Real-Time Cash Management & Reconciliation",
+      "Integrated FX Hedging & Currency Management",
+      "Automated NAV Calculation & Fund Accounting",
+      "Bank-Grade Payment Infrastructure",
+    ],
   },
   {
-    title: "Institutional Deployment",
-    description:
-      "Initial deployment allocates ~$7M toward high-frequency strategies while onboarding the $20–30M LOI pipeline across Year 1.",
+    category: "Custody & Security",
+    items: [
+      "MPC-Based Institutional Wallet Architecture",
+      "Hardware Security Module (HSM) Integration",
+      "Multi-Signature Authorization Workflows",
+      "Hot/Warm/Cold Storage Tiering",
+      "Comprehensive Insurance Coverage",
+    ],
   },
   {
-    title: "Platform Expansion",
-    description:
-      "Year 2+ activates platform fees (0.25–0.75%), advisory retainers, and technology services for external managers and family offices.",
+    category: "Execution & Trading",
+    items: [
+      "FPGA-Accelerated Execution Engine (sub-120ns)",
+      "Smart Order Routing Across 40+ Venues",
+      "Pre-Trade Risk Controls & Mandate Enforcement",
+      "Real-Time Position & Exposure Monitoring",
+      "Automated Trade Cost Analysis (TCA)",
+    ],
   },
-] as const;
-
-const roadmap = [
-  {
-    milestone: "Close Swiss Acquisition",
-    timing: "Q1 2026",
-    details:
-      "Complete change-of-control approvals, transfer banking relationships, and integrate compliance reporting into Mira Labs dashboards.",
-  },
-  {
-    milestone: "Stabilize Core AUM",
-    timing: "Q2 2026",
-    details:
-      "Deploy capital across proprietary strategies, confirm audited track record, and activate LOI conversion workflows.",
-  },
-  {
-    milestone: "Launch CSSF Compartments",
-    timing: "Q3 2026",
-    details:
-      "Stand up first 2–3 pilot compartments for external managers (>$5M each) with standardized onboarding toolkit and service-level agreements.",
-  },
-  {
-    milestone: "Platform Scale & Advisory",
-    timing: "2027",
-    details:
-      "Expand to 5–7 external managers, add advisory retainers, and integrate data APIs for allocator portals and risk teams.",
-  },
-] as const;
+];
 
 export default function PlatformPage() {
   return (
-    <div className="bg-slate-950 text-white">
-      <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
-        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
-        <div className="relative mx-auto flex max-w-5xl flex-col gap-6 px-4 py-28 sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.4em] text-blue-200">
-            Platform
-          </p>
-          <h1 className="text-4xl font-light tracking-tight sm:text-5xl">
-            Institutional infrastructure operating on day one.
-          </h1>
-          <p className="text-lg text-slate-200">
-            Mira Labs integrates a FINMA-authorized Swiss asset manager with a Luxembourg CSSF umbrella,
-            delivering regulated access, Tier-1 banking, and execution technology without the traditional
-            build-out lag.
-          </p>
-          <div className="flex flex-col gap-3 text-sm text-slate-300 sm:flex-row sm:items-center">
-            <span>Key pillars:</span>
-            <ul className="flex flex-wrap gap-3">
-              <li className="rounded-full border border-white/20 px-3 py-1">Regulatory Advantage</li>
-              <li className="rounded-full border border-white/20 px-3 py-1">Institutional Banking</li>
-              <li className="rounded-full border border-white/20 px-3 py-1">Execution Technology</li>
-              <li className="rounded-full border border-white/20 px-3 py-1">Compliance Automation</li>
-            </ul>
+    <main className="min-h-screen bg-[#fafafa]">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-white py-20">
+        <AnimatedDotPattern className="opacity-40" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <h1 className="text-4xl font-light tracking-tight text-gray-900 sm:text-5xl">
+              Institutional Platform
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-gray-600">
+              Regulated infrastructure, institutional-grade execution, and comprehensive custody solutions
+              enabling professional digital asset management across global markets.
+            </p>
+          </motion.div>
+
+          {/* Key Stats */}
+          <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-6 lg:grid-cols-4">
+            {[
+              { value: "18-36", label: "Month Regulatory Moat" },
+              { value: "400+", label: "CSSF Compartments" },
+              { value: "40+", label: "Venue Connectivity" },
+              { value: "<120ns", label: "Execution Latency" },
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+                className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm"
+              >
+                <p className="text-3xl font-light text-gray-900">{stat.value}</p>
+                <p className="mt-2 text-xs font-medium uppercase tracking-wide text-gray-500">{stat.label}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-slate-900 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <h2 className="text-3xl font-light tracking-tight sm:text-4xl">Core Pillars</h2>
-            <p className="mt-4 text-base text-slate-300">
-              Each pillar reflects infrastructure already active within the acquisition scope, enabling Mira
-              Labs to meet institutional due diligence from day one.
+      {/* Platform Features */}
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-light tracking-tight text-gray-900">Platform Components</h2>
+            <p className="mt-4 text-lg text-gray-600">
+              End-to-end infrastructure for institutional digital asset operations
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            {pillars.map((pillar) => (
-              <article key={pillar.heading} className="rounded-2xl border border-white/10 bg-white/5 p-8">
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-blue-200">
-                  {pillar.heading}
-                </h3>
-                <ul className="mt-6 space-y-3 text-sm text-slate-200">
-                  {pillar.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-white/60" aria-hidden="true" />
-                      <span>{bullet}</span>
+
+          <div className="grid gap-12 md:grid-cols-2">
+            {platformFeatures.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="rounded-lg border border-gray-200 bg-white p-8 shadow-sm"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="rounded-full bg-gray-100 p-3">
+                    <feature.icon className="h-6 w-6 text-gray-900" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-gray-900">{feature.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-600">{feature.description}</p>
+
+                    <ul className="mt-6 space-y-3">
+                      {feature.benefits.map((benefit) => (
+                        <li key={benefit} className="flex items-start gap-3 text-sm text-gray-600">
+                          <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-gray-400" />
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Stack */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl font-light tracking-tight text-gray-900">Technical Stack</h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Comprehensive technology and compliance infrastructure
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {technicalStack.map((stack, index) => (
+              <motion.div
+                key={stack.category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="rounded-lg border border-gray-200 bg-gray-50 p-6"
+              >
+                <h3 className="font-semibold text-gray-900">{stack.category}</h3>
+                <ul className="mt-6 space-y-3">
+                  {stack.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400" />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-              </article>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-slate-950 py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl font-light tracking-tight sm:text-4xl">Operating Model</h2>
-            <p className="mt-4 text-base text-slate-300">
-              Integrated workflow from post-close stabilization through platform expansion.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {operatingModel.map((stage, index) => (
-              <div
-                key={stage.title}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
-              >
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-200">
-                    Stage {index + 1}
-                  </span>
-                  <h3 className="text-xl font-light text-white">{stage.title}</h3>
-                </div>
-                <p className="mt-3 text-sm text-slate-200">{stage.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-white/10 bg-slate-900 py-20">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-light tracking-tight sm:text-4xl">Roadmap</h2>
-            <p className="mt-4 text-base text-slate-300">
-              Execution milestones coordinating Swiss and Luxembourg entities through 2027.
-            </p>
-          </div>
-          <div className="space-y-8">
-            {roadmap.map((item) => (
-              <div key={item.milestone} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <h3 className="text-xl font-light text-white">{item.milestone}</h3>
-                  <span className="rounded-full border border-white/20 px-3 py-1 text-xs uppercase tracking-wide text-slate-200">
-                    {item.timing}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm text-slate-200">{item.details}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-gradient-to-r from-blue-900 via-slate-900 to-slate-950 py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      {/* CTA Section */}
+      <section className="bg-gray-900 py-20">
+        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
           <h2 className="text-3xl font-light tracking-tight text-white sm:text-4xl">
-            Ready to review the full platform?
+            Schedule a Platform Demonstration
           </h2>
-          <p className="mt-4 text-base text-slate-200">
-            Request the technical due diligence pack, including control matrices, infrastructure diagrams,
-            and regulatory documentation.
+          <p className="mt-4 text-lg text-gray-300">
+            Explore our institutional infrastructure and discuss bespoke mandate structures with our team.
           </p>
-          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
+
+          <div className="mt-10">
+            <a
               href="/contact"
-              className="rounded-full bg-blue-600 px-8 py-3 text-sm font-medium text-white transition hover:bg-blue-500"
+              className="inline-flex items-center gap-2 rounded-md bg-white px-8 py-4 text-sm font-semibold text-gray-900 transition hover:bg-gray-100"
             >
-              Request Platform Dossier
-            </Link>
-            <Link
-              href="/investment"
-              className="rounded-full border border-white/30 px-8 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-            >
-              View Investment Terms
-            </Link>
+              Request Technical Review
+            </a>
           </div>
+
+          <p className="mt-10 text-sm text-gray-400">
+            Platform access restricted to qualified institutional investors
+          </p>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

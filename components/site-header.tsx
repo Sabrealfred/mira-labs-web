@@ -87,6 +87,12 @@ export function SiteHeader() {
             );
           })}
           <Link
+            href="/login"
+            className="ml-2 rounded-md border border-gray-300 bg-white px-6 py-2.5 text-sm font-semibold text-gray-900 transition hover:bg-gray-50"
+          >
+            Login
+          </Link>
+          <Link
             href="/contact"
             className="ml-2 rounded-md bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-800"
           >

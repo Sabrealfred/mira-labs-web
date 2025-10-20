@@ -82,7 +82,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <label htmlFor="name" className="text-xs font-semibold uppercase tracking-widest text-slate-300">
+          <label htmlFor="name" className="text-xs font-semibold uppercase tracking-wide text-gray-700">
             Name*
           </label>
           <input
@@ -90,12 +90,12 @@ export function ContactForm() {
             name="name"
             type="text"
             required
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-slate-500 focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
             placeholder="Full name"
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-widest text-slate-300">
+          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wide text-gray-700">
             Email*
           </label>
           <input
@@ -103,7 +103,7 @@ export function ContactForm() {
             name="email"
             type="email"
             required
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-slate-500 focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
             placeholder="institution@domain.com"
             autoComplete="email"
           />
@@ -111,7 +111,7 @@ export function ContactForm() {
         <div className="space-y-2">
           <label
             htmlFor="organization"
-            className="text-xs font-semibold uppercase tracking-widest text-slate-300"
+            className="text-xs font-semibold uppercase tracking-wide text-gray-700"
           >
             Organization*
           </label>
@@ -120,26 +120,26 @@ export function ContactForm() {
             name="organization"
             type="text"
             required
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-slate-500 focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
             placeholder="Institution / Fund / Company"
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="role" className="text-xs font-semibold uppercase tracking-widest text-slate-300">
+          <label htmlFor="role" className="text-xs font-semibold uppercase tracking-wide text-gray-700">
             Role / Title
           </label>
           <input
             id="role"
             name="role"
             type="text"
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-slate-500 focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
             placeholder="Managing Partner, CIO, Head of BD..."
           />
         </div>
         <div className="space-y-2">
           <label
             htmlFor="jurisdiction"
-            className="text-xs font-semibold uppercase tracking-widest text-slate-300"
+            className="text-xs font-semibold uppercase tracking-wide text-gray-700"
           >
             Jurisdiction
           </label>
@@ -147,41 +147,33 @@ export function ContactForm() {
             id="jurisdiction"
             name="jurisdiction"
             type="text"
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-slate-500 focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
             placeholder="United States, Switzerland, Singapore..."
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="aum" className="text-xs font-semibold uppercase tracking-widest text-slate-300">
+          <label htmlFor="aum" className="text-xs font-semibold uppercase tracking-wide text-gray-700">
             AUM Bracket
           </label>
           <select
             id="aum"
             name="aum"
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm text-white focus:border-blue-400 focus:outline-none"
+            className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
             defaultValue=""
           >
-            <option value="" disabled className="bg-slate-900 text-slate-500">
+            <option value="" disabled className="text-gray-400">
               Select range
             </option>
-            <option value="under-50" className="bg-slate-900 text-white">
-              Under $50M
-            </option>
-            <option value="50-150" className="bg-slate-900 text-white">
-              $50M – $150M
-            </option>
-            <option value="150-500" className="bg-slate-900 text-white">
-              $150M – $500M
-            </option>
-            <option value="500+" className="bg-slate-900 text-white">
-              $500M+
-            </option>
+            <option value="under-50">Under $50M</option>
+            <option value="50-150">$50M – $150M</option>
+            <option value="150-500">$150M – $500M</option>
+            <option value="500+">$500M+</option>
           </select>
         </div>
       </div>
 
       <fieldset className="space-y-3">
-        <legend className="text-xs font-semibold uppercase tracking-widest text-slate-300">
+        <legend className="text-xs font-semibold uppercase tracking-wide text-gray-700">
           Areas of Interest
         </legend>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -190,10 +182,10 @@ export function ContactForm() {
             return (
               <label
                 key={interest.value}
-                className={`flex cursor-pointer items-center gap-3 rounded-lg border px-4 py-3 text-sm transition ${
+                className={`flex cursor-pointer items-center gap-3 rounded-md border px-4 py-3 text-sm transition ${
                   checked
-                    ? "border-blue-400 bg-blue-500/10 text-white"
-                    : "border-white/15 bg-white/5 text-slate-200 hover:border-blue-300/50"
+                    ? "border-gray-900 bg-gray-100 text-gray-900"
+                    : "border-gray-300 bg-white text-gray-600 hover:border-gray-400"
                 }`}
               >
                 <input
@@ -201,7 +193,7 @@ export function ContactForm() {
                   value={interest.value}
                   checked={checked}
                   onChange={() => toggleInterest(interest.value)}
-                  className="h-4 w-4 rounded border-white/30 bg-transparent text-blue-600 focus:ring-blue-400"
+                  className="h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
                 />
                 <span>{interest.label}</span>
               </label>
@@ -211,27 +203,27 @@ export function ContactForm() {
       </fieldset>
 
       <div className="space-y-2">
-        <label htmlFor="message" className="text-xs font-semibold uppercase tracking-widest text-slate-300">
+        <label htmlFor="message" className="text-xs font-semibold uppercase tracking-wide text-gray-700">
           Notes / Objectives
         </label>
         <textarea
           id="message"
           name="message"
           rows={4}
-          className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-slate-500 focus:border-blue-400 focus:outline-none"
+          className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-900"
           placeholder="Share allocation objectives, timelines, or specific diligence requests."
         />
       </div>
 
-      <label className="flex items-start gap-3 text-xs text-slate-300">
+      <label className="flex items-start gap-3 text-xs text-gray-600">
         <input
           type="checkbox"
           name="compliance"
-          className="mt-1 h-4 w-4 rounded border-white/30 bg-transparent text-blue-600 focus:ring-blue-400"
+          className="mt-1 h-4 w-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
         />
         <span>
           I confirm that I act on behalf of a qualified or professional investor and consent to receive
-          information about Mira Labs’ offerings in accordance with applicable regulations.
+          information about Mira Labs' offerings in accordance with applicable regulations.
         </span>
       </label>
 
@@ -239,17 +231,17 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={state.status === "loading"}
-          className="inline-flex items-center justify-center rounded-full bg-blue-600 px-8 py-3 text-sm font-medium text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:bg-blue-900/60"
+          className="inline-flex items-center justify-center rounded-md bg-gray-900 px-8 py-3 text-sm font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-400"
         >
           {state.status === "loading" ? "Submitting..." : "Submit Request"}
         </button>
         {state.status === "success" ? (
-          <p className="text-xs text-emerald-300">
+          <p className="text-xs text-green-700">
             Submission received. Our team will reach out within two business days.
           </p>
         ) : null}
         {state.status === "error" ? (
-          <p className="text-xs text-rose-300" role="alert">
+          <p className="text-xs text-red-700" role="alert">
             {state.message}
           </p>
         ) : null}
