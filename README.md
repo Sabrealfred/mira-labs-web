@@ -31,3 +31,6 @@ npm run dev
 
 ### Deployment
 Deploy via Vercel (`vercel --prod`) or connect the GitHub repo (`Sabrealfred/mira-labs-web`) in the Vercel dashboard.
+
+### Logos
+Logo assets are available in `/public/logos/` and can be used via the `MiraLogo` component. See `components/README-LOGOS.md` for usage details.
