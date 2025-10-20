@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { DotMatrixLogo } from "./dot-matrix-logo";
+import { MiraLogo } from "./mira-logo";
 
 type NavLink = {
   title: string;
@@ -56,7 +56,7 @@ export function SiteHeader() {
           className="group flex items-center gap-3 transition"
           onClick={closeMenu}
         >
-          <DotMatrixLogo size="sm" />
+          <MiraLogo size="sm" variant="light" className="transition group-hover:scale-[1.02]" />
           <span className="text-lg font-semibold tracking-tight text-gray-900">MIRA LABS</span>
         </Link>
 

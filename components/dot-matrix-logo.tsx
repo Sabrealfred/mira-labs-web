@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 interface DotMatrixLogoProps {
   size?: "sm" | "md" | "lg";
   className?: string;
+  inverted?: boolean; // negro de fondo, blanco encima
 }
 
-export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProps) {
+export function DotMatrixLogo({ size = "md", className = "", inverted = false }: DotMatrixLogoProps) {
   const [hoveredDot, setHoveredDot] = useState<number | null>(null);
 
   // Increased grid size for more detailed dragonfly
@@ -20,6 +21,19 @@ export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProp
 
   const config = sizeConfig[size];
   const totalDots = config.rows * config.cols;
+
+  // Color scheme based on inverted prop
+  const colors = inverted
+    ? {
+        primary: "#ffffff",     // white dots for dragonfly
+        secondary: "#4a4a4a",   // dark gray for background dots
+        hoverPrimary: "#ffffff",
+      }
+    : {
+        primary: "#1a1a1a",     // dark dots for dragonfly
+        secondary: "#d1d5db",   // light gray for background dots
+        hoverPrimary: "#1a1a1a",
+      };
 
   // Much more detailed dragonfly pattern with many more dots
   const isPartOfDragonfly = (index: number): boolean => {
@@ -133,7 +147,9 @@ export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProp
   };
 
   return (
-    <div className={`inline-flex flex-col gap-0 ${className}`}>
+    <div
+      className={`inline-flex flex-col gap-0 ${inverted ? 'bg-black p-4 rounded-lg' : ''} ${className}`}
+    >
       {Array.from({ length: config.rows }).map((_, rowIndex) => (
         <div
           key={rowIndex}
@@ -153,17 +169,17 @@ export function DotMatrixLogo({ size = "md", className = "" }: DotMatrixLogoProp
                 style={{
                   width: config.dotSize,
                   height: config.dotSize,
-                  backgroundColor: isDragonfly ? "var(--dot-primary)" : "var(--dot-secondary)",
+                  backgroundColor: isDragonfly ? colors.primary : colors.secondary,
                 }}
                 initial={{ scale: 0.8, opacity: 0.4 }}
                 animate={{
                   scale: isDragonfly ? 1 : 0.6 + intensity * 0.4,
                   opacity: isDragonfly ? 1 : 0.3 + intensity * 0.5,
                   backgroundColor: intensity > 0.5
-                    ? "var(--dot-primary)"
+                    ? colors.hoverPrimary
                     : isDragonfly
-                    ? "var(--dot-primary)"
-                    : "var(--dot-secondary)",
+                    ? colors.primary
+                    : colors.secondary,
                 }}
                 transition={{
                   duration: 0.3,
@@ -214,6 +230,22 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
+      {/* "Planeta" de fondo - gradiente radial fijo en escala de grises */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(
+              circle at 30% 40%,
+              rgba(80, 80, 80, 0.15) 0%,
+              rgba(50, 50, 50, 0.08) 25%,
+              rgba(30, 30, 30, 0.04) 50%,
+              transparent 70%
+            )
+          `,
+          pointerEvents: 'none',
+        }}
+      />
       <div className="relative h-full w-full">
         {dots.map((_, i) => {
           const col = i % gridCols;
