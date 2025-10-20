@@ -228,26 +228,44 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
             Math.pow(mousePosition.x - x, 2) + Math.pow(mousePosition.y - y, 2)
           );
 
-          // Responsive size based on distance
-          const size = Math.max(2, 6 - distance / 80);
-          const opacity = Math.max(0.15, 0.6 - distance / 250);
+          // MUCH MORE DYNAMIC - larger range, more variation
+          // Size changes dramatically: from 2px to 12px
+          const baseSize = 2.5;
+          const maxSize = 12;
+          const size = distance < 200
+            ? Math.max(baseSize, maxSize - (distance / 20))
+            : baseSize;
 
-          // Color shifts from gray -> black -> white based on proximity to mouse
-          // Palette: negro (#1a1a1a), gris (#999999), blanco (#e5e5e5)
-          let color = "#c0c0c0"; // default light gray
+          // Opacity much more dramatic
+          const opacity = distance < 100
+            ? 1 // Full opacity when very close
+            : distance < 200
+            ? 0.8 - (distance - 100) / 200
+            : distance < 350
+            ? 0.4 - (distance - 200) / 400
+            : 0.1;
 
-          if (distance < 80) {
-            // Very close: black
-            color = "#1a1a1a";
-          } else if (distance < 150) {
-            // Medium distance: dark gray
-            color = "#666666";
+          // MUCH MORE CONTRAST - extremos de negro a blanco
+          let color = "#e0e0e0"; // default very light gray
+
+          if (distance < 60) {
+            // VERY close: Pure BLACK
+            color = "#000000";
+          } else if (distance < 120) {
+            // Close: Very dark gray
+            color = "#2a2a2a";
+          } else if (distance < 180) {
+            // Medium-close: Dark gray
+            color = "#555555";
           } else if (distance < 250) {
-            // Far: medium gray
-            color = "#999999";
+            // Medium: Medium gray
+            color = "#888888";
+          } else if (distance < 350) {
+            // Far: Light gray
+            color = "#b8b8b8";
           } else {
-            // Very far: light gray/white
-            color = "#d4d4d4";
+            // Very far: Almost white
+            color = "#e8e8e8";
           }
 
           return (
@@ -263,10 +281,16 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
                 height: size,
                 opacity: opacity,
                 backgroundColor: color,
+                scale: distance < 100 ? [1, 1.2, 1] : 1, // Pulse effect when close
               }}
               transition={{
-                duration: 0.25,
+                duration: 0.15, // Much faster response
                 ease: "easeOut",
+                scale: {
+                  duration: 0.3,
+                  repeat: distance < 100 ? Infinity : 0,
+                  repeatType: "reverse",
+                },
               }}
             />
           );
