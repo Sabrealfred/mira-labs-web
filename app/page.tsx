@@ -1,14 +1,14 @@
 "use client";
 
 import { Building2, Globe2, TrendingUp, ArrowRight } from "lucide-react";
-import { DotMatrixLogo, AnimatedDotPattern } from "@/components/dot-matrix-logo";
+import { AnimatedDotPattern } from "@/components/dot-matrix-logo";
 import { motion } from "framer-motion";
 
 const metrics = [
-  { value: '$72M', label: 'Assets Under Management' },
-  { value: '31', label: 'Institutional Mandates' },
-  { value: '4', label: 'Regulated Jurisdictions' },
-  { value: '50%+', label: 'EBITDA Margins' },
+  { value: 'Multi-Asset', label: 'Investment Strategies' },
+  { value: 'Global', label: 'Institutional Coverage' },
+  { value: 'Regulated', label: 'FINMA & CSSF Licensed' },
+  { value: '24/7', label: 'Trading Operations' },
 ] as const;
 
 const capabilities = [
@@ -57,25 +57,15 @@ export default function Home() {
     <main className="min-h-screen bg-[#fafafa]">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white py-20 lg:py-32">
-        {/* Animated Dot Pattern Background */}
+        {/* Animated Dot Pattern Background - NO LOGO */}
         <AnimatedDotPattern className="opacity-40" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            {/* Large Logo */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-8 flex justify-center"
-            >
-              <DotMatrixLogo size="lg" />
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6 }}
               className="text-4xl font-light tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
             >
               Omni-Scale Asset Management and Financial Engineering
@@ -84,7 +74,7 @@ export default function Home() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600"
             >
               Swiss FINMA-regulated platform delivering institutional-grade liquidity, structured yield,
@@ -94,7 +84,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
               <a
@@ -117,7 +107,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-6 lg:grid-cols-4"
           >
             {metrics.map((metric, index) => (
@@ -125,7 +115,7 @@ export default function Home() {
                 key={metric.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                 className="rounded-lg border border-gray-200 bg-white p-6 text-center shadow-sm"
               >
                 <p className="text-3xl font-light text-gray-900">{metric.value}</p>

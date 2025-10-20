@@ -228,9 +228,27 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
             Math.pow(mousePosition.x - x, 2) + Math.pow(mousePosition.y - y, 2)
           );
 
-          // Responsive size and opacity based on distance
-          const size = Math.max(1.5, 5 - distance / 100);
-          const opacity = Math.max(0.1, 0.4 - distance / 300);
+          // Responsive size based on distance
+          const size = Math.max(2, 6 - distance / 80);
+          const opacity = Math.max(0.15, 0.6 - distance / 250);
+
+          // Color shifts from gray -> black -> white based on proximity to mouse
+          // Palette: negro (#1a1a1a), gris (#999999), blanco (#e5e5e5)
+          let color = "#c0c0c0"; // default light gray
+
+          if (distance < 80) {
+            // Very close: black
+            color = "#1a1a1a";
+          } else if (distance < 150) {
+            // Medium distance: dark gray
+            color = "#666666";
+          } else if (distance < 250) {
+            // Far: medium gray
+            color = "#999999";
+          } else {
+            // Very far: light gray/white
+            color = "#d4d4d4";
+          }
 
           return (
             <motion.div
@@ -239,15 +257,15 @@ export function AnimatedDotPattern({ className = "" }: { className?: string }) {
               style={{
                 left: `${x}px`,
                 top: `${y}px`,
-                backgroundColor: "var(--dot-secondary)",
               }}
               animate={{
                 width: size,
                 height: size,
                 opacity: opacity,
+                backgroundColor: color,
               }}
               transition={{
-                duration: 0.3,
+                duration: 0.25,
                 ease: "easeOut",
               }}
             />
