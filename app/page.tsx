@@ -1,5 +1,6 @@
 import { LineChart, ShieldCheck, Waves } from "lucide-react";
 import { fetchLandingContent, type LandingContent } from "@/lib/strapi";
+import { AnimatedDotPattern } from "@/components/dot-matrix-logo";
 
 const iconMap = {
   waves: Waves,
@@ -252,11 +253,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-transparent text-white">
       <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-0">
-          <div className="pointer-events-none absolute -left-16 top-[-160px] h-80 w-80 rounded-full bg-sky-400/20 blur-3xl" />
-          <div className="pointer-events-none absolute right-[-120px] top-32 h-96 w-96 rounded-full bg-indigo-500/25 blur-3xl" />
-          <div className="pointer-events-none absolute bottom-[-220px] left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-blue-500/15 blur-3xl" />
-        </div>
+        <AnimatedDotPattern className="opacity-40" />
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 text-center sm:px-6 lg:px-8">
           {landing.heroBadge ? (
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[0.35em] text-slate-200">
