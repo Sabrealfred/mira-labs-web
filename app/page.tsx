@@ -20,24 +20,24 @@ const fallbackLanding: LandingContent = {
   secondaryCtaHref: "/strategies",
   metrics: [
     {
-      value: "$72M",
-      label: "Assets Under Management",
-      detail: "Multi-jurisdictional digital + traditional mandates",
+      value: "Institutional",
+      label: "Asset Management",
+      detail: "Regulated platform for digital and traditional markets",
     },
     {
-      value: "31",
-      label: "Institutional Mandates",
-      detail: "Family offices, funds, treasuries, and corporates",
+      value: "Multi-Strategy",
+      label: "Investment Approach",
+      detail: "Liquidity, yield, and macro across asset classes",
     },
     {
-      value: "4",
-      label: "Regulated Jurisdictions",
-      detail: "Switzerland, Luxembourg, United States, Singapore",
+      value: "Global",
+      label: "Regulatory Coverage",
+      detail: "Licensed operations across key financial centers",
     },
     {
-      value: "2",
-      label: "Primary Licenses",
-      detail: "FINMA Asset Manager • CSSF Umbrella Compartments",
+      value: "24/7",
+      label: "Market Operations",
+      detail: "Continuous execution and risk management",
     },
   ],
   capabilities: [
