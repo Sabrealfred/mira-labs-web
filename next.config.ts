@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Removed 'output: export' to enable server-side rendering on Vercel
   images: {
-    unoptimized: true,
+    unoptimized: false,
   },
 };
 
