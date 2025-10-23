@@ -17,7 +17,7 @@ npm run dev
 ### Site Map
 - `/` — Landing overview (mandates, capabilities, platform, research snippets)
 - `/platform` — Infrastructure, banking/custody, execution, analytics
-- `/strategies` — Programme catalogue (liquidity, yield, macro) + governance stack
+- `/strategies` — Program catalogue (liquidity, yield, macro) + governance stack
 - `/governance` — Regulatory posture, committees, reporting cadence
 - `/team` — Leadership biographies and track record
 - `/research` — Publications, data services, roadmap

@@ -16,6 +16,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
+  --font-headings: var(--font-sansation);
 }
 
 body {
@@ -26,6 +27,11 @@ body {
   line-height: 1.6;
   letter-spacing: -0.01em;
   font-weight: 400;
+}
+
+/* Headings use Sansation font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sansation), "Sansation", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* Professional card style */

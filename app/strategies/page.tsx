@@ -9,7 +9,7 @@ const strategyGroups = [
     icon: TrendingUp,
     title: "Digital Liquidity",
     description:
-      "Market-neutral programs providing continuous liquidity and inventory balancing across centralised and decentralised venues.",
+      "Market-neutral programs providing continuous liquidity and inventory balancing across centralized and decentralized venues.",
     strategies: [
       {
         name: "Global Market Neutral",
@@ -29,10 +29,10 @@ const strategyGroups = [
     icon: Layers,
     title: "Yield Engineering",
     description:
-      "Structured solutions blending TradFi credit rigour with tokenised collateral, built for corporate and institutional treasuries.",
+      "Structured solutions blending TradFi credit rigor with tokenized collateral, built for corporate and institutional treasuries.",
     strategies: [
       {
-        name: "Tokenised Funding Programme",
+        name: "Tokenized Funding Program",
         metrics: ["Tenors: 30–180 days", "Collateral coverage 110%+", "Enhanced monitoring"],
         detail:
           "Secured lending across vetted counterparties with margin calls, programmatic reconciliations, and bank-level documentation.",
@@ -122,7 +122,7 @@ export default function StrategiesPage() {
               Investment Strategies
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-gray-600">
-              Regulated access to digital and traditional liquidity, yield, and macro programmes powered
+              Regulated access to digital and traditional liquidity, yield, and macro programs powered
               by institutional infrastructure and global banking partnerships.
             </p>
           </motion.div>
@@ -151,7 +151,7 @@ export default function StrategiesPage() {
           <div className="mb-16 text-center">
             <h2 className="text-3xl font-light tracking-tight text-gray-900">Strategy Catalogue</h2>
             <p className="mt-4 text-lg text-gray-600">
-              Fully-operational programmes with dedicated portfolio and risk teams, configurable to segregated
+              Fully-operational programs with dedicated portfolio and risk teams, configurable to segregated
               accounts or multi-client compartments.
             </p>
           </div>

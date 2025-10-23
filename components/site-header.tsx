@@ -57,7 +57,7 @@ export function SiteHeader() {
           onClick={closeMenu}
         >
           <MiraLogo size="sm" variant="light" className="transition group-hover:scale-[1.02]" />
-          <span className="text-lg font-semibold tracking-tight text-gray-900">MIRA LABS</span>
+          <span className="text-lg font-semibold tracking-tight text-gray-900" style={{ fontFamily: 'var(--font-sansation)' }}>MIRA LABS</span>
         </Link>
 
         <button

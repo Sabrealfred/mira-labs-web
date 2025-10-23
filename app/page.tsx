@@ -52,7 +52,7 @@ const fallbackLanding: LandingContent = {
     {
       title: "Yield Engineering & Structured Access",
       summary:
-        "Collateralised lending, stablecoin yield, and token-forward structures with bank-grade monitoring.",
+        "Collateralized lending, stablecoin yield, and token-forward structures with bank-grade monitoring.",
       detail:
         "Integrates TradFi credit processes with on-chain transparency, offering duration-matched solutions for treasuries and funds.",
       icon: "shield-check",
@@ -191,10 +191,10 @@ const fallbackLanding: LandingContent = {
         "Analysis of exchange depth, basis spreads, and venue selection across major digital asset markets.",
     },
     {
-      title: "Yield Curve in Tokenised Credit",
+      title: "Yield Curve in Tokenized Credit",
       type: "Whitepaper",
       summary:
-        "Framework for collateral quality, duration, and counterparty selection in tokenised money markets.",
+        "Framework for collateral quality, duration, and counterparty selection in tokenized money markets.",
     },
     {
       title: "Macro Regime Monitor",
@@ -218,7 +218,7 @@ const fallbackLanding: LandingContent = {
     },
     {
       outlet: "Global Treasury Forum",
-      headline: "Treasuries turn to Mira Labs for tokenised yield programmes with daily transparency.",
+      headline: "Treasuries turn to Mira Labs for tokenized yield programs with daily transparency.",
       date: "Jul 2025",
     },
     {

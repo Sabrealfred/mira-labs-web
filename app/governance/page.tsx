@@ -69,7 +69,7 @@ const disclosures = [
     heading: "Policies & Documentation",
     list: [
       "Investment Policy Statements & IPS addenda per mandate",
-      "AML/KYC Programme and Travel Rule compliance",
+      "AML/KYC Program and Travel Rule compliance",
       "Business Continuity & Disaster Recovery plans",
       "Code of Ethics, personal dealing, and insider trading policies",
       "Cybersecurity framework and incident response playbooks",
